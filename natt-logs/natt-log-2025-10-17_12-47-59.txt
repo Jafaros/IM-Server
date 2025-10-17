@@ -1,0 +1,14 @@
+[12:47:59][PluginLoader][INFO] No plugins found.
+[12:47:59][NATTCore][INFO] NATT CORE initialization done
+Version: 1.7.0 
+Configuration path: test-config.yaml
+Configuration loading mode: FROM HOST
+[12:47:59][NATTCore][INFO] Working directory path: C:\Users\grajc\Documents\GitHub\IM-Server
+[12:47:59][NATTCore][INFO] Start loading of the configuration file ...
+[12:47:59][LocalHostIO][INFO] Yaml data has been loaded from file (test-config.yaml)
+[12:47:59][NATTCore][INFO] Configuration loading done
+[12:47:59][NATTCore][INFO] Start building test structure according to the configuration ...
+[12:47:59][NATTCore][INFO] Test structure ...
+[12:47:59][NATTCore][INFO] Test structure building done
+[12:47:59][NATTCore][INFO] Start test executing ...
+[12:47:59][TestReportGenerator][INFO] Extenet reports generated. Final report will be saved to file: test_report.html

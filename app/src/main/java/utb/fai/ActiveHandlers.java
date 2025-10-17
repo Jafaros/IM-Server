@@ -1,10 +1,11 @@
 package utb.fai;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ActiveHandlers {
     private static final long serialVersionUID = 1L;
-    private HashSet<SocketHandler> activeHandlersSet = new HashSet<SocketHandler>();
+    private ConcurrentHashMap<String, SocketHandler> activeHandlersSet = new ConcurrentHashMap<String, SocketHandler>();
 
     /**
      * sendMessageToAll - Pole zprávu vem aktivním klientùm kromì sebe sama
@@ -13,11 +14,38 @@ public class ActiveHandlers {
      * @param message - øetìzec se zprávou
      */
     synchronized void sendMessageToAll(SocketHandler sender, String message) {
-        for (SocketHandler handler : activeHandlersSet) // pro vechny aktivní handlery
-            if (handler != sender) {
-                if (!handler.messages.offer(message)) // zkus pøidat zprávu do fronty jeho zpráv
-                    System.err.printf("Client %s message queue is full, dropping the message!\n", handler.clientID);
+        for (SocketHandler handler : activeHandlersSet.values()) {
+            if (handler != sender && !Collections.disjoint(sender.groups, handler.groups)) {
+                if (!handler.messages.offer("[" + sender.userName +"] >> " + message)) {
+                    System.err.printf("Client %s message queue is full, dropping the message!\n", handler.userName);
+                }
             }
+        }
+    }
+
+    void setName(String name, SocketHandler handler) {
+        String oldKey = null;
+
+        for (Map.Entry<String, SocketHandler> entry : activeHandlersSet.entrySet()) {
+            if (entry.getValue() == handler) {
+                oldKey = entry.getKey();
+                break;
+            }
+        }
+
+        if (oldKey != null) {
+            activeHandlersSet.remove(oldKey);
+        }
+
+        activeHandlersSet.put(name, handler);
+    }
+
+    boolean existsName(String name) {
+        return activeHandlersSet.containsKey(name);
+    }
+
+    SocketHandler getByName(String name) {
+        return activeHandlersSet.get(name);
     }
 
     /**
@@ -27,8 +55,8 @@ public class ActiveHandlers {
      * @param handler - reference na handler, který se má pøidat.
      * @return true if the set did not already contain the specified element.
      */
-    synchronized boolean add(SocketHandler handler) {
-        return activeHandlersSet.add(handler);
+    synchronized void add(SocketHandler handler) {
+        activeHandlersSet.put(handler.clientID, handler);
     }
 
     /**
@@ -38,7 +66,7 @@ public class ActiveHandlers {
      * @param handler - reference na handler, který se má odstranit
      * @return true if the set did not already contain the specified element.
      */
-    synchronized boolean remove(SocketHandler handler) {
-        return activeHandlersSet.remove(handler);
+    synchronized void remove(SocketHandler handler) {
+        activeHandlersSet.values().remove(handler);
     }
 }

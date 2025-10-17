@@ -1,0 +1,20 @@
+[13:29:08][PluginLoader][INFO] No plugins found.
+[13:29:08][NATTCore][INFO] NATT CORE initialization done
+Version: 1.7.0 
+Configuration path: https://gitlab.com/ap5vs/test-config/im-server-config/-/raw/main/test-config-4.yaml?ref_type=heads
+Configuration loading mode: FROM URL
+[13:29:08][NATTCore][INFO] Working directory path: C:\Users\grajc\Documents\GitHub\IM-Server
+[13:29:08][NATTCore][INFO] Start loading of the configuration file ...
+[13:29:08][NetworkIO][INFO] Yaml data has been loaded from network location (https://gitlab.com/ap5vs/test-config/im-server-config/-/raw/main/test-config-4.yaml?ref_type=heads)
+[13:29:08][NATTCore][INFO] Configuration loading done
+[13:29:08][NATTCore][INFO] Start building test structure according to the configuration ...
+[13:29:08][NATTCore][INFO] Test structure ...
+[13:29:08][NATTCore][INFO] Test structure building done
+[13:29:08][NATTCore][INFO] Start test executing ...
+[13:29:09][TestReportGenerator][INFO] Extenet reports generated. Final report will be saved to file: test_report.html
+[13:29:09][NATTCore][INFO] Starts execution on the root keyword  ...
+[13:29:09][MessageBuffer][INFO] Message buffer created for module with name: default
+[13:29:09][ExternalProgramRunner][INFO] (default) Run external app with command: java -jar app/build/libs/app.jar 9999 10
+[13:29:09][ProcessManager][INFO] New PID (29124) added to file
+[13:29:09][WaitKw][INFO] Waiting: 3000 ms
+[13:29:09][MessageBuffer][INFO] Message added to buffer [ Mod: default | Tag:  ] Content: 'IM server listening on port 9999, maximum nr. of connections=10...'

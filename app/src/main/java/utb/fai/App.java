@@ -1,13 +1,17 @@
 package utb.fai;
 
-import java.io.*;
-import java.net.*;
-import java.util.concurrent.*;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class App {
 
 	public static void main(String[] args) {
-		int port = 33000, max_conn = 2;
+		int port = 33000, max_conn = 3;
 
 		if (args.length > 0) {
 			if (args[0].startsWith("--help")) {

@@ -1,0 +1,55 @@
+[12:48:06][PluginLoader][INFO] No plugins found.
+[12:48:06][NATTCore][INFO] NATT CORE initialization done
+Version: 1.7.0 
+Configuration path: https://gitlab.com/ap5vs/test-config/im-server-config/-/raw/main/test-config-4.yaml?ref_type=heads
+Configuration loading mode: FROM URL
+[12:48:06][NATTCore][INFO] Working directory path: C:\Users\grajc\Documents\GitHub\IM-Server
+[12:48:06][NATTCore][INFO] Start loading of the configuration file ...
+[12:48:07][NetworkIO][INFO] Yaml data has been loaded from network location (https://gitlab.com/ap5vs/test-config/im-server-config/-/raw/main/test-config-4.yaml?ref_type=heads)
+[12:48:07][NATTCore][INFO] Configuration loading done
+[12:48:07][NATTCore][INFO] Start building test structure according to the configuration ...
+[12:48:07][NATTCore][INFO] Test structure ...
+[12:48:07][NATTCore][INFO] Test structure building done
+[12:48:07][NATTCore][INFO] Start test executing ...
+[12:48:07][TestReportGenerator][INFO] Extenet reports generated. Final report will be saved to file: test_report.html
+[12:48:07][NATTCore][INFO] Starts execution on the root keyword  ...
+[12:48:07][MessageBuffer][INFO] Message buffer created for module with name: default
+[12:48:07][ExternalProgramRunner][INFO] (default) Run external app with command: java -jar app/build/libs/app.jar 9999 10
+[12:48:07][ProcessManager][INFO] New PID (2448) added to file
+[12:48:07][WaitKw][INFO] Waiting: 3000 ms
+[12:48:07][MessageBuffer][INFO] Message added to buffer [ Mod: default | Tag:  ] Content: 'IM server listening on port 9999, maximum nr. of connections=10...'
+[12:48:10][MessageBuffer][INFO] Message buffer created for module with name: client-1
+[12:48:10][TelnetClient][INFO] (client-1) Telnet client connected to host with the address: 'localhost' on port '9999'
+[12:48:10][MessageBuffer][INFO] Message buffer created for module with name: client-2
+[12:48:10][TelnetClient][INFO] (client-2) Telnet client connected to host with the address: 'localhost' on port '9999'
+[12:48:10][MessageBuffer][INFO] Message buffer created for module with name: client-3
+[12:48:10][TelnetClient][INFO] (client-3) Telnet client connected to host with the address: 'localhost' on port '9999'
+[12:48:10][WaitKw][INFO] Waiting: 2000 ms
+[12:48:12][TelnetClient][INFO] (client-1) Message send: Klient1
+[12:48:12][TelnetClient][INFO] (client-2) Message send: Klient2
+[12:48:12][TelnetClient][INFO] (client-3) Message send: Klient3
+[12:48:12][WaitKw][INFO] Waiting: 800 ms
+[12:48:13][TestSuiteKw][INFO] Test case 'Zaklaní test komunikace 1' starts executing now
+[12:48:13][TelnetClient][INFO] (client-1) Message send: Hello, world!
+[12:48:13][WaitKw][INFO] Waiting: 1000 ms
+[12:48:14][AssertEqualsKw][WARNING] Assertion failed. Variable 'client-2-last-msg' not found!
+[12:48:14][AssertEqualsKw][WARNING] Assertion failed. Variable 'client-3-last-msg' not found!
+[12:48:14][TestSuiteKw][ERROR] Test suite 'Testování běžné komunikace' - Test case 'Zaklaní test komunikace 1' failed
+[12:48:14][MessageBuffer][INFO] Message buffer cleared
+[12:48:15][TestSuiteKw][INFO] Test case 'Zaklaní test komunikace 2' starts executing now
+[12:48:15][TelnetClient][INFO] (client-1) Message send: Testing 123
+[12:48:15][TelnetClient][INFO] (client-2) Message send: 12345 - 67890
+[12:48:15][TelnetClient][INFO] (client-3) Message send: This is a test message
+[12:48:15][WaitKw][INFO] Waiting: 1000 ms
+[12:48:16][NATTContext][INFO] Data has been stored in to the variable 'var-1'. Data value: 
+[12:48:16][AssertEqualsKw][WARNING] Assertion failed. True was expected as the result. Condition: (Value of variable '' must equals expected text '[Klient2] >> 12345 - 67890')
+[12:48:16][NATTContext][INFO] Data has been stored in to the variable 'var-1'. Data value: 
+[12:48:16][AssertEqualsKw][WARNING] Assertion failed. True was expected as the result. Condition: (Value of variable '' must contains expected text '[Klient3] >> This is a test message')
+[12:48:16][NATTContext][INFO] Data has been stored in to the variable 'var-1'. Data value: 
+[12:48:16][AssertEqualsKw][WARNING] Assertion failed. True was expected as the result. Condition: (Value of variable '' must contains expected text '[Klient1] >> Testing 123')
+[12:48:16][TestSuiteKw][ERROR] Test suite 'Testování běžné komunikace' - Test case 'Zaklaní test komunikace 2' failed
+[12:48:16][MessageBuffer][INFO] Message buffer cleared
+[12:48:16][TestSuiteKw][INFO] Test case 'Test odeslání soukromé zprávy' starts executing now
+[12:48:16][TelnetClient][INFO] (client-2) Message send: #sendPrivate Klient3 This is a private message
+[12:48:16][WaitKw][INFO] Waiting: 1000 ms
+[12:48:16][MessageBuffer][INFO] Message added to buffer [ Mod: client-2 | Tag:  ] Content: 'User Klient3 not found.'

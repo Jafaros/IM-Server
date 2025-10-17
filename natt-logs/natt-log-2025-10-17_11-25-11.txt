@@ -1,0 +1,188 @@
+[11:25:11][PluginLoader][INFO] No plugins found.
+[11:25:11][NATTCore][INFO] NATT CORE initialization done
+Version: 1.7.0 
+Configuration path: https://gitlab.com/ap5vs/test-config/im-server-config/-/raw/main/test-config-4.yaml?ref_type=heads
+Configuration loading mode: FROM URL
+[11:25:11][NATTCore][INFO] Working directory path: C:\Users\grajc\Documents\GitHub\IM-Server
+[11:25:11][NATTCore][INFO] Start loading of the configuration file ...
+[11:25:12][NetworkIO][INFO] Yaml data has been loaded from network location (https://gitlab.com/ap5vs/test-config/im-server-config/-/raw/main/test-config-4.yaml?ref_type=heads)
+[11:25:12][NATTCore][INFO] Configuration loading done
+[11:25:12][NATTCore][INFO] Start building test structure according to the configuration ...
+[11:25:12][NATTCore][INFO] Test structure ...
+[11:25:12][NATTCore][INFO] Test structure building done
+[11:25:12][NATTCore][INFO] Start test executing ...
+[11:25:12][TestReportGenerator][INFO] Extenet reports generated. Final report will be saved to file: test_report.html
+[11:25:12][NATTCore][INFO] Starts execution on the root keyword  ...
+[11:25:12][MessageBuffer][INFO] Message buffer created for module with name: default
+[11:25:12][ExternalProgramRunner][INFO] (default) Run external app with command: java -jar app/build/libs/app.jar 9999 10
+[11:25:12][ProcessManager][INFO] New PID (10640) added to file
+[11:25:12][WaitKw][INFO] Waiting: 3000 ms
+[11:25:12][MessageBuffer][INFO] Message added to buffer [ Mod: default | Tag:  ] Content: 'IM server listening on port 9999, maximum nr. of connections=10...'
+[11:25:15][MessageBuffer][INFO] Message buffer created for module with name: client-1
+[11:25:15][TelnetClient][INFO] (client-1) Telnet client connected to host with the address: 'localhost' on port '9999'
+[11:25:15][MessageBuffer][INFO] Message buffer created for module with name: client-2
+[11:25:15][TelnetClient][INFO] (client-2) Telnet client connected to host with the address: 'localhost' on port '9999'
+[11:25:15][MessageBuffer][INFO] Message buffer created for module with name: client-3
+[11:25:15][TelnetClient][INFO] (client-3) Telnet client connected to host with the address: 'localhost' on port '9999'
+[11:25:15][WaitKw][INFO] Waiting: 2000 ms
+[11:25:17][TelnetClient][INFO] (client-1) Message send: Klient1
+[11:25:17][TelnetClient][INFO] (client-2) Message send: Klient2
+[11:25:17][TelnetClient][INFO] (client-3) Message send: Klient3
+[11:25:17][WaitKw][INFO] Waiting: 800 ms
+[11:25:18][TestSuiteKw][INFO] Test case 'Zaklaní test komunikace 1' starts executing now
+[11:25:18][TelnetClient][INFO] (client-1) Message send: Hello, world!
+[11:25:18][WaitKw][INFO] Waiting: 1000 ms
+[11:25:19][AssertEqualsKw][WARNING] Assertion failed. Variable 'client-2-last-msg' not found!
+[11:25:19][AssertEqualsKw][WARNING] Assertion failed. Variable 'client-3-last-msg' not found!
+[11:25:19][TestSuiteKw][ERROR] Test suite 'Testování běžné komunikace' - Test case 'Zaklaní test komunikace 1' failed
+[11:25:19][MessageBuffer][INFO] Message buffer cleared
+[11:25:20][TestSuiteKw][INFO] Test case 'Zaklaní test komunikace 2' starts executing now
+[11:25:20][TelnetClient][INFO] (client-1) Message send: Testing 123
+[11:25:20][TelnetClient][INFO] (client-2) Message send: 12345 - 67890
+[11:25:20][TelnetClient][INFO] (client-3) Message send: This is a test message
+[11:25:20][WaitKw][INFO] Waiting: 1000 ms
+[11:25:21][NATTContext][INFO] Data has been stored in to the variable 'var-1'. Data value: 
+[11:25:21][AssertEqualsKw][WARNING] Assertion failed. True was expected as the result. Condition: (Value of variable '' must equals expected text '[Klient2] >> 12345 - 67890')
+[11:25:21][NATTContext][INFO] Data has been stored in to the variable 'var-1'. Data value: 
+[11:25:21][AssertEqualsKw][WARNING] Assertion failed. True was expected as the result. Condition: (Value of variable '' must contains expected text '[Klient3] >> This is a test message')
+[11:25:21][NATTContext][INFO] Data has been stored in to the variable 'var-1'. Data value: 
+[11:25:21][AssertEqualsKw][WARNING] Assertion failed. True was expected as the result. Condition: (Value of variable '' must contains expected text '[Klient1] >> Testing 123')
+[11:25:21][TestSuiteKw][ERROR] Test suite 'Testování běžné komunikace' - Test case 'Zaklaní test komunikace 2' failed
+[11:25:21][MessageBuffer][INFO] Message buffer cleared
+[11:25:21][TestSuiteKw][INFO] Test case 'Test odeslání soukromé zprávy' starts executing now
+[11:25:21][TelnetClient][INFO] (client-2) Message send: #sendPrivate Klient3 This is a private message
+[11:25:21][WaitKw][INFO] Waiting: 1000 ms
+[11:25:21][MessageBuffer][INFO] Message added to buffer [ Mod: client-2 | Tag:  ] Content: 'User Klient3 not found.'
+[11:25:22][NATTContext][INFO] Data has been stored in to the variable 'var-1'. Data value: 
+[11:25:22][NATTContext][INFO] Data has been stored in to the variable 'var-2'. Data value: 
+[11:25:22][AssertEqualsKw][WARNING] Assertion failed. True was expected as the result. Condition: (Value of variable '' must contains expected text '[Klient2] >> This is a private message')
+[11:25:22][TestSuiteKw][ERROR] Test suite 'Testování běžné komunikace' - Test case 'Test odeslání soukromé zprávy' failed
+[11:25:22][MessageBuffer][INFO] Message buffer cleared
+[11:25:23][MessageBuffer][INFO] Message buffer cleared
+[11:25:23][TestSuiteKw][INFO] Test case 'Test vstoupení do diskuzní místnosti' starts executing now
+[11:25:23][TelnetClient][INFO] (client-1) Message send: #join MyGroup1
+[11:25:23][TelnetClient][INFO] (client-2) Message send: #join MyGroup1
+[11:25:23][WaitKw][INFO] Waiting: 1000 ms
+[11:25:24][TelnetClient][INFO] (client-1) Message send: #groups
+[11:25:24][WaitKw][INFO] Waiting: 1000 ms
+[11:25:24][MessageBuffer][INFO] Message added to buffer [ Mod: client-1 | Tag:  ] Content: 'Groups: MyGroup1'
+[11:25:25][TelnetClient][INFO] (client-1) Message send: #leave public
+[11:25:25][TelnetClient][INFO] (client-2) Message send: #leave public
+[11:25:25][WaitKw][INFO] Waiting: 1000 ms
+[11:25:26][TelnetClient][INFO] (client-1) Message send: #groups
+[11:25:26][WaitKw][INFO] Waiting: 1000 ms
+[11:25:26][MessageBuffer][INFO] Message added to buffer [ Mod: client-1 | Tag:  ] Content: 'Groups: MyGroup1'
+[11:25:27][TestSuiteKw][INFO] Test suite 'Testování diskuzních místností' - Test case 'Test vstoupení do diskuzní místnosti' passed
+[11:25:27][MessageBuffer][INFO] Message buffer cleared
+[11:25:28][TestSuiteKw][INFO] Test case 'Test komunikace v diskuzní místnosti' starts executing now
+[11:25:28][TelnetClient][INFO] (client-1) Message send: This is private message
+[11:25:28][WaitKw][INFO] Waiting: 1000 ms
+[11:25:29][AssertEqualsKw][WARNING] Assertion failed. True was expected as the result. Condition: (Value of variable 'User Klient3 not found.' must contains expected text 'This is private message')
+[11:25:29][AssertEqualsKw][WARNING] Assertion failed. Variable 'client-3-last-msg' not found!
+[11:25:29][TelnetClient][INFO] (client-3) Message send: #join MyGroup1
+[11:25:29][WaitKw][INFO] Waiting: 1000 ms
+[11:25:30][TelnetClient][INFO] (client-1) Message send: This is private message
+[11:25:30][WaitKw][INFO] Waiting: 1000 ms
+[11:25:31][AssertEqualsKw][WARNING] Assertion failed. Variable 'client-3-last-msg' not found!
+[11:25:31][TestSuiteKw][ERROR] Test suite 'Testování diskuzních místností' - Test case 'Test komunikace v diskuzní místnosti' failed
+[11:25:31][MessageBuffer][INFO] Message buffer cleared
+[11:25:32][MessageBuffer][INFO] Message buffer cleared
+[11:25:32][TestSuiteKw][INFO] Test case 'Test změny jména' starts executing now
+[11:25:32][TelnetClient][INFO] (client-1) Message send: #setMyName NoveJmeno1
+[11:25:32][WaitKw][INFO] Waiting: 1000 ms
+[11:25:32][MessageBuffer][INFO] Message added to buffer [ Mod: default | Tag:  ] Content: '#setMyName NoveJmeno1'
+[11:25:32][MessageBuffer][INFO] Message added to buffer [ Mod: client-1 | Tag:  ] Content: 'Your name has been set to NoveJmeno1'
+[11:25:32][MessageBuffer][INFO] Message added to buffer [ Mod: client-2 | Tag:  ] Content: '[null] >> Hello world'
+[11:25:32][MessageBuffer][INFO] Message added to buffer [ Mod: client-3 | Tag:  ] Content: '[null] >> Hello world'
+[11:25:32][MessageBuffer][INFO] Message added to buffer [ Mod: client-2 | Tag:  ] Content: '[null] >> #setMyName NoveJmeno1'
+[11:25:32][MessageBuffer][INFO] Message added to buffer [ Mod: client-3 | Tag:  ] Content: '[null] >> #setMyName NoveJmeno1'
+[11:25:33][TelnetClient][INFO] (client-1) Message send: This is new message
+[11:25:33][MessageBuffer][INFO] Message added to buffer [ Mod: default | Tag:  ] Content: 'This is new message'
+[11:25:33][WaitKw][INFO] Waiting: 1000 ms
+[11:25:33][MessageBuffer][INFO] Message added to buffer [ Mod: client-3 | Tag:  ] Content: '[null] >> This is new message'
+[11:25:33][MessageBuffer][INFO] Message added to buffer [ Mod: client-2 | Tag:  ] Content: '[null] >> This is new message'
+[11:25:34][AssertEqualsKw][WARNING] Assertion failed. True was expected as the result. Condition: (Value of variable '[null] >> This is new message' must contains expected text '[NoveJmeno1] >> This is new message')
+[11:25:34][TestSuiteKw][ERROR] Test suite 'Testování příkazu pro změnů jména' - Test case 'Test změny jména' failed
+[11:25:34][MessageBuffer][INFO] Message buffer cleared
+[11:25:34][TestSuiteKw][INFO] Test case 'Test změny na neunikátní jméno' starts executing now
+[11:25:34][TelnetClient][INFO] (client-1) Message send: #setMyName Klient2
+[11:25:34][WaitKw][INFO] Waiting: 1000 ms
+[11:25:34][MessageBuffer][INFO] Message added to buffer [ Mod: client-3 | Tag:  ] Content: '[null] >> Hello world'
+[11:25:34][MessageBuffer][INFO] Message added to buffer [ Mod: client-2 | Tag:  ] Content: '[null] >> Hello world'
+[11:25:34][MessageBuffer][INFO] Message added to buffer [ Mod: default | Tag:  ] Content: '#setMyName Klient2'
+[11:25:34][MessageBuffer][INFO] Message added to buffer [ Mod: client-3 | Tag:  ] Content: '[null] >> #setMyName Klient2'
+[11:25:34][MessageBuffer][INFO] Message added to buffer [ Mod: client-1 | Tag:  ] Content: 'Your name has been set to Klient2'
+[11:25:34][MessageBuffer][INFO] Message added to buffer [ Mod: client-2 | Tag:  ] Content: '[null] >> #setMyName Klient2'
+[11:25:35][TelnetClient][INFO] (client-1) Message send: This is new message
+[11:25:35][MessageBuffer][INFO] Message added to buffer [ Mod: default | Tag:  ] Content: 'This is new message'
+[11:25:35][WaitKw][INFO] Waiting: 1000 ms
+[11:25:35][MessageBuffer][INFO] Message added to buffer [ Mod: client-3 | Tag:  ] Content: '[null] >> This is new message'
+[11:25:35][MessageBuffer][INFO] Message added to buffer [ Mod: client-2 | Tag:  ] Content: '[null] >> This is new message'
+[11:25:36][AssertEqualsKw][WARNING] Assertion failed. True was expected as the result. Condition: (Value of variable '[null] >> This is new message' must contains expected text '[NoveJmeno1] >> This is new message')
+[11:25:36][TestSuiteKw][ERROR] Test suite 'Testování příkazu pro změnů jména' - Test case 'Test změny na neunikátní jméno' failed
+[11:25:37][MessageBuffer][INFO] Message buffer cleared
+[11:25:37][MessageBuffer][INFO] Message buffer cleared
+[11:25:37][MessageBuffer][INFO] Message buffer cleared
+[11:25:37][ExternalProgramRunner][INFO] (default) Termiting external application
+[11:25:37][ProcessManager][INFO] PID (10640) removed from file
+[11:25:37][TelnetClient][WARNING] (client-3) Connection closed
+[11:25:37][TelnetClient][WARNING] (client-1) Connection closed
+[11:25:37][TelnetClient][WARNING] (client-2) Connection closed
+[11:25:37][TelnetClient][INFO] (client-1) Telnet client [client-1] terminated
+[11:25:37][ProcessManager][INFO] PID (10640) removed from file
+[11:25:37][TelnetClient][INFO] (client-2) Telnet client [client-2] terminated
+[11:25:37][TelnetClient][INFO] (client-3) Telnet client [client-3] terminated
+[11:25:37][NATTCore][INFO] Test executing finished
+[11:25:37][NATTCore][INFO] Start generating test report
+[11:25:37][ExternalProgramRunner][WARNING] (default) External application ends with error: 1
+[11:25:37][ExternalProgramRunner][WARNING] (default) Error message from external application: DBG>Output handler starting for /127.0.0.1:59444
+DBG>Output handler starting for /127.0.0.1:59445
+DBG>Input handler starting for /127.0.0.1:59446
+DBG>Input handler starting for /127.0.0.1:59445
+DBG>Output handler starting for /127.0.0.1:59446
+DBG>Input handler running for /127.0.0.1:59445
+DBG>Output handler running for /127.0.0.1:59446
+DBG>Input handler starting for /127.0.0.1:59444
+DBG>Input handler running for /127.0.0.1:59444
+DBG>Output handler running for /127.0.0.1:59444
+DBG>Input handler running for /127.0.0.1:59446
+DBG>Output handler running for /127.0.0.1:59445
+DBG>Message sent to /127.0.0.1:59445:User Klient3 not found.
+
+DBG>Message sent to /127.0.0.1:59444:Groups: MyGroup1
+
+DBG>Message sent to /127.0.0.1:59444:Groups: MyGroup1
+
+DBG>Message sent to /127.0.0.1:59445:[null] >> Hello world
+
+DBG>Message sent to /127.0.0.1:59446:[null] >> Hello world
+
+DBG>Message sent to /127.0.0.1:59445:[null] >> #setMyName NoveJmeno1
+
+DBG>Message sent to /127.0.0.1:59444:Your name has been set to NoveJmeno1
+
+DBG>Message sent to /127.0.0.1:59446:[null] >> #setMyName NoveJmeno1
+
+DBG>Message sent to /127.0.0.1:59445:[null] >> This is new message
+
+DBG>Message sent to /127.0.0.1:59446:[null] >> This is new message
+
+DBG>Message sent to /127.0.0.1:59445:[null] >> Hello world
+
+DBG>Message sent to /127.0.0.1:59444:Your name has been set to Klient2
+
+DBG>Message sent to /127.0.0.1:59445:[null] >> #setMyName Klient2
+
+DBG>Message sent to /127.0.0.1:59446:[null] >> Hello world
+
+DBG>Message sent to /127.0.0.1:59446:[null] >> #setMyName Klient2
+
+DBG>Message sent to /127.0.0.1:59445:[null] >> This is new message
+
+DBG>Message sent to /127.0.0.1:59446:[null] >> This is new message
+
+
+[11:25:37][TestReportGenerator][INFO] Report saved to file
+[11:25:37][NATTCore][WARNING] Failed test cases: "Zaklaní test komunikace 1", "Zaklaní test komunikace 2", "Test odeslání soukromé zprávy", "Test komunikace v diskuzní místnosti", "Test změny jména", "Test změny na neunikátní jméno"
+[11:25:37][NATTCore][INFO] Final score: 1,571429
+[11:25:37][NATTCore][ERROR] Testing done. Leaving status: FAILED
